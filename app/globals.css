@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define CSS variables for theming.
+  This allows smooth transitions between light and dark modes.
+*/
+:root {
+  --color-background: #ffffff;
+  --color-text: #0a0f1a;
+  --color-muted: #e6eef2;
+  --color-primary: #0b2b4a;
+  --color-accent: #0fa3a3;
+}
+
+html.dark {
+  --color-background: #0a0f1a;
+  --color-text: #e6eef2;
+  --color-muted: #1a2c3f;
+  --color-primary: #0b2b4a; /* Sidebar bg is constant */
+  --color-accent: #0fa3a3;
+}
+
+body {
+  @apply bg-light-background text-light-text;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+@layer utilities {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #0fa3a3 0%, #0b2b4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
